@@ -1,0 +1,46 @@
+mkdir new_repository
+cd new_repository
+git init
+git add index.html
+git commit -m 'Save portaone.com'
+git checkout -b TEST
+touch readme.txt
+git add readme.txt
+git commit -m "added readme.txt"
+git checkout master
+git merge TEST
+git log
+cat index.html  >readme.txt
+git add readme.txt
+git commit -m "Cp index to readme"
+git checkout TEST
+vim readme.txt
+git add readme.txt
+git commit -m "Smth to readme from TEST"
+git checkout master
+git merge TEST
+Auto-merging readme.txt
+CONFLICT (content): Merge conflict in readme.txt
+Automatic merge failed; fix conflicts and then commit the result.
+delet conflicts using vim
+git add readme.txt
+git commit -m "Fix conflicts"
+git log
+Первый был Fast-forvard merge второй c ручным исправление конфликтов
+git checkout TEST
+echo "любая строка">> index.html
+git add index.html
+git commit -m "text update"
+echo "любая строка #2">> index.html
+git add index.html
+git commit -m "text update #2"
+git checkout master
+git cherry-pick 6fd2f
+error: could not apply 6fd2f88... text update #2
+hint: after resolving the conflicts, mark the corrected paths
+hint: with 'git add <paths>' or 'git rm <paths>'
+hint: and commit the result with 'git commit'
+fix conflict using vim
+vim index.html
+git add index.html
+git cherry-pick --continue
